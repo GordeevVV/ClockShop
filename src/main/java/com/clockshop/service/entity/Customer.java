@@ -1,19 +1,19 @@
 package com.clockshop.service.entity;
 
 public class Customer {
-    private int customer_id;
+    private int customerId;
     private String first_name;
     private String last_name;
     private String email;
     private String address;
     private int phone;
 
-    public int getCustomer_id() {
-        return customer_id;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getFirst_name() {

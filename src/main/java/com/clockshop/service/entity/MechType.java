@@ -1,15 +1,15 @@
 package com.clockshop.service.entity;
 
-public class Mech_type {
-    private int mech_id;
+public class MechType {
+    private int mechId;
     private String type;
 
-    public int getMech_id() {
-        return mech_id;
+    public int getMechId() {
+        return mechId;
     }
 
-    public void setMech_id(int mech_id) {
-        this.mech_id = mech_id;
+    public void setMechId(int mechId) {
+        this.mechId = mechId;
     }
 
     public String getType() {

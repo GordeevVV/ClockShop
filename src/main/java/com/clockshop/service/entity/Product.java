@@ -1,21 +1,45 @@
 package com.clockshop.service.entity;
 
 public class Product {
-    private int product_id;
+    private int productId;
     private String name;
     private String description;
     private String release_date;
-    private String image_url;
-    private int material_id;
-    private int mech_id;
+    private String imageUrl;
+    private int materialId;
+    private int mechId;
     private float price;
 
-    public int getProduct_id() {
-        return product_id;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getMaterialId() {
+        return materialId;
+    }
+
+    public void setMaterialId(int materialId) {
+        this.materialId = materialId;
+    }
+
+    public int getMechId() {
+        return mechId;
+    }
+
+    public void setMechId(int mechId) {
+        this.mechId = mechId;
     }
 
     public String getName() {
@@ -40,30 +64,6 @@ public class Product {
 
     public void setRelease_date(String release_date) {
         this.release_date = release_date;
-    }
-
-    public String getImage_url() {
-        return image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
-
-    public int getMaterial_id() {
-        return material_id;
-    }
-
-    public void setMaterial_id(int material_id) {
-        this.material_id = material_id;
-    }
-
-    public int getMech_id() {
-        return mech_id;
-    }
-
-    public void setMech_id(int mech_id) {
-        this.mech_id = mech_id;
     }
 
     public float getPrice() {

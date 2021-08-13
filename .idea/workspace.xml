@@ -22,28 +22,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4641acc-51e5-4694-af5d-f5eccacdd258" name="Default Changelist" comment="Create project">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/ClockShopApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Discount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Material.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Mech_type.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Order_product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/customers.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/discounts.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/materials.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/mech_types.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/order_products.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/orders.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/products.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="a4641acc-51e5-4694-af5d-f5eccacdd258" name="Default Changelist" comment="ClockShop Update(pom/migrate/main)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Mech_type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/MechType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Order_product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/OrderProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/migration/mech_types.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/migration/mechTypes.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/migration/order_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/migration/orderProducts.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628620167925</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ClockShop Update(pom/migrate/main)">
+      <created>1628851919169</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628851919169</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,10 +139,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Create project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create project" />
+    <MESSAGE value="ClockShop Update(pom/migrate/main)" />
+    <option name="LAST_COMMIT_MESSAGE" value="ClockShop Update(pom/migrate/main)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="0" key="#Project_Structure" timestamp="1628775278447">
@@ -157,10 +155,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1628775484682" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1628849710829">
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1628854064600">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1628849710829" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1628854064600" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1628850933117">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -193,13 +191,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1628775110169" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1628620170120">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1628851921257">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1628620170120" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1628851921257" />
     <state x="498" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1628774999660">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824@0.0.1536.824" timestamp="1628774999660" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1628853903009">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1628853903009" />
   </component>
 </project>

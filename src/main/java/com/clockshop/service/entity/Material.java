@@ -1,15 +1,15 @@
 package com.clockshop.service.entity;
 
 public class Material {
-    private int material_id;
+    private int materialId;
     private String material;
 
-    public int getMaterial_id() {
-        return material_id;
+    public int getMaterialId() {
+        return materialId;
     }
 
-    public void setMaterial_id(int material_id) {
-        this.material_id = material_id;
+    public void setMaterialId(int materialId) {
+        this.materialId = materialId;
     }
 
     public String getMaterial() {

@@ -1,40 +1,40 @@
 package com.clockshop.service.entity;
 
 public class Order {
-    private int order_id;
-    private int customer_id;
-    private String created_at;
-    private float calc_price;
+    private int orderId;
+    private int customerId;
+    private String createdAt;
+    private float calcPrice;
 
-    public int getOrder_id() {
-        return order_id;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
-    public int getCustomer_id() {
-        return customer_id;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public String getCreated_at() {
-        return created_at;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public float getCalc_price() {
-        return calc_price;
+    public float getCalcPrice() {
+        return calcPrice;
     }
 
-    public void setCalc_price(float calc_price) {
-        this.calc_price = calc_price;
+    public void setCalcPrice(float calcPrice) {
+        this.calcPrice = calcPrice;
     }
 }

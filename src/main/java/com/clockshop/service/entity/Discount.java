@@ -1,35 +1,35 @@
 package com.clockshop.service.entity;
 
 public class Discount {
-    private int discount_id;
-    private int product_id;
-    private int customer_id;
+    private int discountId;
+    private int productId;
+    private int customerId;
     private String name;
     private String description;
     private int percent;
 
-    public int getDiscount_id() {
-        return discount_id;
+    public int getDiscountId() {
+        return discountId;
     }
 
-    public void setDiscount_id(int discount_id) {
-        this.discount_id = discount_id;
+    public void setDiscountId(int discountId) {
+        this.discountId = discountId;
     }
 
-    public int getProduct_id() {
-        return product_id;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    public int getCustomer_id() {
-        return customer_id;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getName() {
