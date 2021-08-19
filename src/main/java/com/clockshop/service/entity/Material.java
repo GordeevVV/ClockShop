@@ -4,6 +4,11 @@ public class Material {
     private int materialId;
     private String material;
 
+    public Material(int materialId, String material) {
+        this.materialId = materialId;
+        this.material = material;
+    }
+
     public int getMaterialId() {
         return materialId;
     }

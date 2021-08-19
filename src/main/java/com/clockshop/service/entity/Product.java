@@ -6,9 +6,29 @@ public class Product {
     private String description;
     private String release_date;
     private String imageUrl;
+    private int stampId;
     private int materialId;
     private int mechId;
     private float price;
+
+    public Product(int productId, String name, String imageUrl, int materialId,int stampId, int mechId, float price) {
+        this.productId = productId;
+        this.name = name;
+        this.imageUrl = imageUrl;
+        this.stampId=stampId;
+        this.materialId = materialId;
+        this.mechId = mechId;
+        this.price = price;
+    }
+
+
+    public int getStampId() {
+        return stampId;
+    }
+
+    public void setStampId(int stampId) {
+        this.stampId = stampId;
+    }
 
     public int getProductId() {
         return productId;

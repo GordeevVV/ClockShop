@@ -23,16 +23,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4641acc-51e5-4694-af5d-f5eccacdd258" name="Default Changelist" comment="ClockShop Update(pom/migrate/main)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/JDBSSimulation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/MessageTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/TelegramBotReplyKeyboardMarkup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/config/TelegramConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Stamp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/BasketMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/CorpMaterialMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/HomeMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/JdbsHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/OrderMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/ShopMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/StampMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/TelegramCallbackQueryHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/TelegramMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/handlers/TypeOfMeasurementMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/listeners/ClockUpdateListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/repository/DiscountRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/repository/MaterialRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/repository/MechTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/repository/OrderProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/repository/OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/repository/StampRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Mech_type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/MechType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Order_product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/OrderProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/MechType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/MechType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clockshop/service/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/migration/mech_types.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/migration/mechTypes.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/migration/order_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/migration/orderProducts.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +63,9 @@
       <list>
         <option value="XHTML File" />
         <option value="HTML File" />
+        <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -72,11 +93,25 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SpringTest" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ClockShopApp">
+    <configuration name="ClockShopApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.clockshop.service.ClockShopApp" />
+      <module name="ClockShop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.clockshop.service.handlers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ClockShop [spring-boot:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -102,6 +137,11 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ClockShopApp" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -155,14 +195,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1628775484682" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1628854064600">
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1629318080287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1628854064600" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1628850933117">
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1629318080287" />
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1629300133259">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1628850933117" />
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1629300133259" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1629037871620">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629037871620" />
     <state x="646" y="310" key="Github.ShareDialog" timestamp="1628620093085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -171,22 +215,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="567" y="117" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1628620111313" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1628777032134">
+    <state width="1493" height="263" key="GridCell.Tab.0.bottom" timestamp="1629320561202">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1628777032134" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1628777032133">
+    <state width="1493" height="263" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629320561202" />
+    <state width="1493" height="263" key="GridCell.Tab.0.center" timestamp="1629320561202">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1628777032133" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1628777032133">
+    <state width="1493" height="263" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629320561202" />
+    <state width="1493" height="263" key="GridCell.Tab.0.left" timestamp="1629320561202">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1628777032133" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1628777032134">
+    <state width="1493" height="263" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629320561202" />
+    <state width="1493" height="263" key="GridCell.Tab.0.right" timestamp="1629320561202">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1628777032134" />
+    <state width="1493" height="263" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629320561202" />
+    <state width="1493" height="263" key="GridCell.Tab.1.bottom" timestamp="1629320561203">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629320561203" />
+    <state width="1493" height="263" key="GridCell.Tab.1.center" timestamp="1629320561203">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1629320561203" />
+    <state width="1493" height="263" key="GridCell.Tab.1.left" timestamp="1629320561203">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1629320561203" />
+    <state width="1493" height="263" key="GridCell.Tab.1.right" timestamp="1629320561203">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1629320561203" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1628775110169">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -195,13 +255,44 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1628851921257" />
+    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1629283095259">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1629283095259" />
     <state x="498" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1628774999660">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824@0.0.1536.824" timestamp="1628774999660" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1628853903009">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1629291367080">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1628853903009" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1629291367080" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/clockshop/service/listeners/ClockUpdateListener.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/clockshop/service/listeners/ClockUpdateListener.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.clockshop.service.handlers.JdbsHandler" memberName="list" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="update.callback_query.message.from" />
+        <watch expression="update.callback_query.from" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

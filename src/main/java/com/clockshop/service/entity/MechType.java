@@ -4,6 +4,11 @@ public class MechType {
     private int mechId;
     private String type;
 
+    public MechType(int mechId, String type) {
+        this.mechId = mechId;
+        this.type = type;
+    }
+
     public int getMechId() {
         return mechId;
     }
