@@ -1,6 +1,13 @@
 package com.clockshop.service.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="discounts")
 public class Discount {
+    @Id
     private int discountId;
     private int productId;
     private int customerId;

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component(MessageTypes.SHOP)
 public class ShopMessageHandler implements TelegramMessageHandler{
-    TelegramBot bot;
+   private TelegramBot bot;
 
     public ShopMessageHandler(TelegramBot bot) {
         this.bot = bot;
@@ -19,27 +19,19 @@ public class ShopMessageHandler implements TelegramMessageHandler{
     public void onMessage(Message message) {
         InlineKeyboardMarkup keyboard=new InlineKeyboardMarkup(
                 (new InlineKeyboardButton[]{
-                        new InlineKeyboardButton("Марка").callbackData("Марка")
+                        new InlineKeyboardButton("Марка").callbackData(MessageTypes.STAMP)
                 }),
                 (new InlineKeyboardButton[]{
-                        new InlineKeyboardButton("Материал корпуса").callbackData("Материал корпуса")
+                        new InlineKeyboardButton("Материал корпуса").callbackData(MessageTypes.CORP_MATERIAL)
                 }),
                 (new InlineKeyboardButton[]{
-                        new InlineKeyboardButton("Вид измерения").callbackData("Вид измерения")
-                }));
+                        new InlineKeyboardButton("Вид измерения").callbackData(MessageTypes.TYPE_OF_MEASUREMENT)
+                }),
+        (new InlineKeyboardButton[]{
+                new InlineKeyboardButton("Назад").callbackData(MessageTypes.HOME)
+        }));
         SendMessage request = new SendMessage(message.chat().id(),"Выберете вариант сортировки")
                .replyMarkup(keyboard);
         bot.execute(request);
     }
 }
- /*Keyboard keyboard = new ReplyKeyboardMarkup(
-                (new KeyboardButton[]{
-                        new KeyboardButton("Марка")
-                }),
-                (new KeyboardButton[]{
-                        new KeyboardButton("Материал корпуса")
-                }),
-                (new KeyboardButton[]{
-                        new KeyboardButton("Вид измерения")
-                })
-        ).oneTimeKeyboard(true).resizeKeyboard(true).selective(true);*/

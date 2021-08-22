@@ -1,10 +1,37 @@
 package com.clockshop.service.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name="orders")
 public class Order {
+    @Id
     private int orderId;
-    private int customerId;
-    private String createdAt;
+    private long customerId;
+    private LocalDateTime createdAt;
     private float calcPrice;
+    private String status;
+
+    public Order(int orderId, float calcPrice, String status) {
+        this.orderId = orderId;
+        this.calcPrice = calcPrice;
+        this.status = status;
+    }
+
+    public Order() {
+
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public int getOrderId() {
         return orderId;
@@ -14,19 +41,19 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public int getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 
-    public String getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

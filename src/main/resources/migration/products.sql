@@ -12,6 +12,7 @@ CREATE TABLE public.products
     material_id integer NOT NULL,
     mech_id integer NOT NULL,
     price real NOT NULL,
+    stamp_id integer NOT NULL,
     CONSTRAINT product_pkey PRIMARY KEY (product_id),
     CONSTRAINT fk_material FOREIGN KEY (material_id)
         REFERENCES public.materials (material_id) MATCH SIMPLE
@@ -20,6 +21,11 @@ CREATE TABLE public.products
         NOT VALID,
     CONSTRAINT fk_mech FOREIGN KEY (mech_id)
         REFERENCES public.mechs_types (mech_id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+        NOT VALID,
+    CONSTRAINT fk_stamp FOREIGN KEY (stamp_id)
+        REFERENCES public.stamp (stamp_id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE RESTRICT
         NOT VALID

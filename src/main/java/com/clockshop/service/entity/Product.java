@@ -1,10 +1,18 @@
 package com.clockshop.service.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name="products")
 public class Product {
+    @Id
     private int productId;
     private String name;
     private String description;
-    private String release_date;
+    private LocalDateTime release_date;
     private String imageUrl;
     private int stampId;
     private int materialId;
@@ -19,6 +27,10 @@ public class Product {
         this.materialId = materialId;
         this.mechId = mechId;
         this.price = price;
+    }
+
+    public Product() {
+
     }
 
 
@@ -78,11 +90,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getRelease_date() {
+    public LocalDateTime getRelease_date() {
         return release_date;
     }
 
-    public void setRelease_date(String release_date) {
+    public void setRelease_date(LocalDateTime release_date) {
         this.release_date = release_date;
     }
 

@@ -1,12 +1,23 @@
 package com.clockshop.service.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="mech_types")
 public class MechType {
+    @Id
     private int mechId;
     private String type;
 
     public MechType(int mechId, String type) {
         this.mechId = mechId;
         this.type = type;
+    }
+
+    public MechType() {
+
     }
 
     public int getMechId() {

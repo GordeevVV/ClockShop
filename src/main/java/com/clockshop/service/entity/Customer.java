@@ -1,7 +1,14 @@
 package com.clockshop.service.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="customers")
 public class Customer {
-    private int customerId;
+    @Id
+    private long customerId;
     private String first_name;
     private String last_name;
     private String email;
@@ -9,10 +16,10 @@ public class Customer {
     private int phone;
 
     public int getCustomerId() {
-        return customerId;
+        return (int) customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 

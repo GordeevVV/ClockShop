@@ -1,53 +1,58 @@
 package com.clockshop.service.handlers;
 
 import com.clockshop.service.MessageTypes;
+import com.clockshop.service.entity.Stamp;
+import com.clockshop.service.repository.StampRepository;
 import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.model.CallbackQuery;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.request.InlineKeyboardButton;
 import com.pengrad.telegrambot.model.request.InlineKeyboardMarkup;
+import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.request.DeleteMessage;
+import com.pengrad.telegrambot.request.EditMessageText;
 import com.pengrad.telegrambot.request.SendMessage;
+import com.pengrad.telegrambot.response.BaseResponse;
+import org.apache.commons.logging.Log;
 import org.springframework.stereotype.Component;
 
-@Component(MessageTypes.STAMP)
-public class StampMessageHandler implements TelegramMessageHandler{
-    TelegramBot bot;
+import java.util.ArrayList;
+import java.util.List;
 
-    public StampMessageHandler(TelegramBot bot) {
+@Component(MessageTypes.STAMP)
+public class StampMessageHandler implements TelegramCallbackQueryHandler{
+    private TelegramBot bot;
+    private StampRepository stampRepository;
+    public StampMessageHandler(TelegramBot bot,StampRepository stampRepository) {
+        this.stampRepository=stampRepository;
         this.bot = bot;
     }
 
     @Override
-    public void onMessage(Message message) {
-        InlineKeyboardMarkup keyboard=new InlineKeyboardMarkup(
-                (new InlineKeyboardButton[]{
-                        new InlineKeyboardButton("Casio").callbackData("Casio"),
-                        new InlineKeyboardButton("Seiko").callbackData("Seiko")
-                }),
-                (new InlineKeyboardButton[]{
-                        new InlineKeyboardButton("Tag Heuer").callbackData("Tag Heuer"),
-                        new InlineKeyboardButton("Omega").callbackData("Omega"),
-
-                }),
-                (new InlineKeyboardButton[]{
-                        new InlineKeyboardButton("Timex").callbackData("Timex"),
-                        new InlineKeyboardButton("Citizen").callbackData("Citizen")
-                }),
-                (new InlineKeyboardButton[]{
-                        new InlineKeyboardButton("Titan").callbackData("Titan"),
-                        new InlineKeyboardButton("Patek Philippe").callbackData("Patek Philippe")
-                }),
-                (new InlineKeyboardButton[]{
-                        new InlineKeyboardButton("Oakley").callbackData("Oakley"),
-                        new InlineKeyboardButton("Rolex").callbackData("Rolex")
-                }),
-                (new InlineKeyboardButton[]{
-                        new InlineKeyboardButton("Назад").callbackData("Назад1")
-                }));
-        DeleteMessage deleteMessage=new DeleteMessage(message.chat().id(),message.messageId());
-        bot.execute(deleteMessage);
-        SendMessage request = new SendMessage(message.chat().id(),"Доступные марки")
-             .replyMarkup(keyboard);
+    public void onCallBackQuery(CallbackQuery callbackQuery) {
+        List<InlineKeyboardButton> listButtons=new ArrayList<>();
+        List<InlineKeyboardButton[]>listRows=new ArrayList<>();
+        int i=0;
+        for (Stamp stamp: stampRepository.getList()) {
+            listButtons.add(new InlineKeyboardButton(stamp.getStamp()).callbackData(stamp.getStamp()));
+            if(i%2==1) {
+                listRows.add(listButtons.toArray(new InlineKeyboardButton[0]));
+                listButtons.clear();
+            }
+            i++;
+        }
+        listButtons.add(new InlineKeyboardButton("Назад").callbackData(MessageTypes.SHOP));
+        listRows.add(listButtons.toArray(new InlineKeyboardButton[0]));
+        listButtons.clear();
+        EditMessageText request = new EditMessageText(callbackQuery.message().chat().id(), callbackQuery.message().messageId()
+                , "Доступные марки:")
+                .parseMode(ParseMode.HTML)
+                .disableWebPagePreview(true);
+            request.replyMarkup(new InlineKeyboardMarkup(listRows.toArray(new InlineKeyboardButton[0][0])));
+        listRows.clear();
+//        SendMessage request = new SendMessage(callbackQuery.message().chat().id(),"Доступные марки")
+//                .replyMarkup(new InlineKeyboardMarkup(listRows.toArray(new InlineKeyboardButton[0][0])));
+//        listRows.clear();
         bot.execute(request);
     }
 }
