@@ -20,7 +20,7 @@ CREATE TABLE public.products
         ON DELETE RESTRICT
         NOT VALID,
     CONSTRAINT fk_mech FOREIGN KEY (mech_id)
-        REFERENCES public.mechs_types (mech_id) MATCH SIMPLE
+        REFERENCES public.mech_types (mech_id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE RESTRICT
         NOT VALID,

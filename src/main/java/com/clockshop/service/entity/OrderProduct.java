@@ -1,15 +1,23 @@
 package com.clockshop.service.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="order_products")
 public class OrderProduct {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int orderproductId;
     private int orderId;
     private int productId;
+
+    public int getOrderproductId() {
+        return orderproductId;
+    }
+
+    public void setOrderproductId(int orderproductId) {
+        this.orderproductId = orderproductId;
+    }
 
     public OrderProduct(int orderId, int productId) {
         this.orderId = orderId;

@@ -1,12 +1,11 @@
 package com.clockshop.service.handlers;
 
 import com.clockshop.service.MessageTypes;
+import com.clockshop.service.entity.Customer;
 import com.clockshop.service.entity.Order;
 import com.clockshop.service.entity.OrderProduct;
 import com.clockshop.service.entity.Product;
-import com.clockshop.service.repository.OrderProductRepository;
-import com.clockshop.service.repository.OrderRepository;
-import com.clockshop.service.repository.ProductRepository;
+import com.clockshop.service.repository.*;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.CallbackQuery;
 import com.pengrad.telegrambot.model.Message;
@@ -16,72 +15,77 @@ import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.request.SendPhoto;
 import org.springframework.stereotype.Component;
 
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
 @Component(MessageTypes.BASKET)
 public class BasketMessageHandler implements TelegramCallbackQueryHandler,TelegramMessageHandler{
     TelegramBot bot;
-    OrderRepository orderRepository;
-    OrderProductRepository orderProductRepository;
-    ProductRepository productRepository;
+    OrderJpaRepository orderJpaRepository;
+    OrderProductJpaRepository orderProductJpaRepository;
+    ProductJpaRepository productJpaRepository;
+    CustomerJpaRepository customerJpaRepository;
 
-
-    public BasketMessageHandler(TelegramBot bot, OrderRepository orderRepository
-            , OrderProductRepository orderProductRepository, ProductRepository productRepository) {
+    public BasketMessageHandler(TelegramBot bot, OrderJpaRepository orderJpaRepository, OrderProductJpaRepository orderProductJpaRepository
+            , ProductJpaRepository productJpaRepository, CustomerJpaRepository customerJpaRepository) {
         this.bot = bot;
-        this.orderRepository = orderRepository;
-        this.orderProductRepository = orderProductRepository;
-        this.productRepository = productRepository;
+        this.orderJpaRepository = orderJpaRepository;
+        this.orderProductJpaRepository = orderProductJpaRepository;
+        this.productJpaRepository = productJpaRepository;
+        this.customerJpaRepository = customerJpaRepository;
     }
 
     @Override
     public void onCallBackQuery(CallbackQuery callbackQuery) {
-       Product product=productRepository.getList().get(Integer.parseInt(callbackQuery.data()));
-       Order order1=new Order(-1,200,"..");
-       for (Order order:orderRepository.getOrderList()){
-           if(order.getStatus().equals("basket")) {
-               order1 = order;
-               order1.setCalcPrice(order.getCalcPrice()+product.getPrice());
-               OrderProduct orderProduct=new OrderProduct(order.getOrderId(), product.getProductId());
-               orderProductRepository.setOrderProduct(orderProduct);
-           }
-       }
-       if(order1.getOrderId()==-1) {
-           order1.setOrderId(orderRepository.getOrderList().hashCode());
-           order1.setCalcPrice(product.getPrice());
-           order1.setStatus("basket");
-           OrderProduct orderProduct=new OrderProduct(order1.getOrderId(), product.getProductId());
-           orderProductRepository.setOrderProduct(orderProduct);
-       }
-       orderRepository.insertInList(order1);
+        Customer customer = customerJpaRepository.findById(callbackQuery.from().id()).orElseGet(() -> {
+            Customer c = new Customer(callbackQuery.from().id(),
+                    callbackQuery.from().firstName(), callbackQuery.from().lastName()
+                    , callbackQuery.from().username());
+            customerJpaRepository.save(c);
+            return c;
+        });
+        Product product = productJpaRepository.findById(Integer.parseInt(callbackQuery.data())).get();
+        Order order = orderJpaRepository.findByStatusAndCustomerId("basket", customer.getCustomerId()).orElseGet(() -> {
+            Order o = new Order();
+            o.setCalcPrice(0);
+            o.setStatus("basket");
+            o.setCustomerId(customer.getCustomerId());
+            return o;
+        });
+        order.setCalcPrice(order.getCalcPrice() + product.getPrice());
+        OrderProduct orderProduct = new OrderProduct(order.getOrderId(), product.getProductId());
+        orderJpaRepository.save(order);
+        orderProductJpaRepository.save(orderProduct);
     }
 
     @Override
     public void onMessage(Message message) {
-        for(Order order:orderRepository.getOrderList()){
-            if(order.getStatus().equals("basket")){
-                for (OrderProduct orderproduct:orderProductRepository.getOrderProductList()) {
-                    if(orderproduct.getOrderId()==order.getOrderId()){
-                        Product product=productRepository.getList().get(orderproduct.getProductId());
-                        List< InlineKeyboardButton > inlineKeyboardButtons = new ArrayList<>(new ArrayList< InlineKeyboardButton >(Arrays.asList(
+        Order order;
+        if(orderJpaRepository.findByStatusAndCustomerId("basket",message.from().id()).isPresent()) {
+            order = orderJpaRepository.findByStatusAndCustomerId("basket", message.from().id()).get();
+            List<OrderProduct> orderProducts = orderProductJpaRepository.findAllByOrderId(order.getOrderId());
+            for (OrderProduct orderproduct : orderProducts) {
+                Product product = productJpaRepository.findAll().get(orderproduct.getProductId());
+                List<InlineKeyboardButton> inlineKeyboardButtons =
+                        new ArrayList<>(new ArrayList<>(Arrays.asList(
                                 new InlineKeyboardButton("Исключить из заказа")
-                                        .callbackData("Delete_" + product.getProductId())
+                                        .callbackData("Delete_" + orderproduct.getOrderproductId())
                         )));
-                        SendPhoto sendPhoto=new SendPhoto(message.chat().id(),product.getImageUrl())
-                                .caption(product.getName()+"\n"+"Цена:"+product.getPrice()+" руб")
-                                .replyMarkup(new InlineKeyboardMarkup(inlineKeyboardButtons.toArray(new InlineKeyboardButton[0])));
-                        bot.execute(sendPhoto);
-                        inlineKeyboardButtons.clear();
-                    }
-                }
-                SendMessage sendMessage=new SendMessage(message.chat().id(),"Заказ:")
-                        .replyMarkup(new InlineKeyboardMarkup
-                                (new InlineKeyboardButton("Оформить").callbackData(MessageTypes.ORDER),
-                                        new InlineKeyboardButton("Домой").callbackData(MessageTypes.HOME)));
-            bot.execute(sendMessage);
+                SendPhoto sendPhoto = new SendPhoto(message.chat().id(), product.getImageUrl())
+                        .caption(product.getName() + "\n" + "Цена:" + product.getPrice() + " руб")
+                        .replyMarkup(new InlineKeyboardMarkup(inlineKeyboardButtons.toArray(new InlineKeyboardButton[0])));
+                bot.execute(sendPhoto);
+                inlineKeyboardButtons.clear();
             }
+            SendMessage sendMessage = new SendMessage(message.chat().id(), "Заказ:")
+                    .replyMarkup(new InlineKeyboardMarkup
+                            (new InlineKeyboardButton("Оформить").callbackData(MessageTypes.ORDER),
+                                    new InlineKeyboardButton("Домой").callbackData(MessageTypes.HOME)));
+            bot.execute(sendMessage);
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.clockshop.service.config;
 
-import com.clockshop.service.listeners.ClockUpdateListener;
+
 import com.pengrad.telegrambot.TelegramBot;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

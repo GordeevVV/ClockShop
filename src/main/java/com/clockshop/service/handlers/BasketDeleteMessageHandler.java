@@ -1,30 +1,29 @@
 package com.clockshop.service.handlers;
 
 import com.clockshop.service.MessageTypes;
-import com.clockshop.service.entity.OrderProduct;
-import com.clockshop.service.repository.OrderProductRepository;
-import com.clockshop.service.repository.OrderRepository;
-import com.clockshop.service.repository.ProductRepository;
+import com.clockshop.service.entity.Order;
+import com.clockshop.service.repository.OrderJpaRepository;
+import com.clockshop.service.repository.OrderProductJpaRepository;
+import com.clockshop.service.repository.ProductJpaRepository;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.CallbackQuery;
 import com.pengrad.telegrambot.request.DeleteMessage;
 import org.springframework.stereotype.Component;
 
-import java.util.Scanner;
 
 @Component(MessageTypes.DELETE)
 public class BasketDeleteMessageHandler implements TelegramCallbackQueryHandler{
     TelegramBot bot;
-    OrderRepository orderRepository;
-    OrderProductRepository orderProductRepository;
-    ProductRepository productRepository;
+    OrderJpaRepository orderJpaRepository;
+    OrderProductJpaRepository orderProductJpaRepository;
+    ProductJpaRepository productJpaRepository;
 
-    public BasketDeleteMessageHandler(TelegramBot bot, OrderRepository orderRepository
-            , OrderProductRepository orderProductRepository, ProductRepository productRepository) {
+    public BasketDeleteMessageHandler(TelegramBot bot, OrderJpaRepository orderJpaRepository
+            , OrderProductJpaRepository orderProductJpaRepository, ProductJpaRepository productJpaRepository) {
         this.bot = bot;
-        this.orderRepository = orderRepository;
-        this.orderProductRepository = orderProductRepository;
-        this.productRepository = productRepository;
+        this.orderJpaRepository = orderJpaRepository;
+        this.orderProductJpaRepository = orderProductJpaRepository;
+        this.productJpaRepository = productJpaRepository;
     }
 
     @Override
@@ -32,14 +31,13 @@ public class BasketDeleteMessageHandler implements TelegramCallbackQueryHandler{
         DeleteMessage deleteMessage=new DeleteMessage(callbackQuery.message().chat().id(),callbackQuery.message().messageId());
         bot.execute(deleteMessage);
         String prefix="Delete_";
-        int deleteProductId=Integer.parseInt(callbackQuery.data()
+        int deleteOrderProductId=Integer.parseInt(callbackQuery.data()
                 .substring(callbackQuery.data().indexOf(prefix)+prefix.length()));
-        int deleteOrderId=0;
-        for (OrderProduct orderProduct:orderProductRepository.getOrderProductList()){
-            if(orderProduct.getProductId()==deleteProductId)
-                deleteOrderId=orderProduct.getOrderId();
-        }
-       orderProductRepository.deleteProductFromOrderProductList(deleteProductId);
-       orderRepository.deleteFromList(deleteOrderId);
+
+        Order order=orderJpaRepository.findById(orderProductJpaRepository.findById(deleteOrderProductId).get().getOrderId()).get();
+        order.setCalcPrice(order.getCalcPrice()-productJpaRepository.findById(
+                orderProductJpaRepository.findById(deleteOrderProductId).get().getProductId()).get().getPrice());
+        orderJpaRepository.save(order);
+       orderProductJpaRepository.deleteById(deleteOrderProductId);
     }
 }

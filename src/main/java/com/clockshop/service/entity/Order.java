@@ -1,13 +1,12 @@
 package com.clockshop.service.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="orders")
 public class Order {
+    @Column(nullable = false)
     @Id
     private int orderId;
     private long customerId;

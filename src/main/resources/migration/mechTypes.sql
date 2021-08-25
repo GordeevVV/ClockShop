@@ -2,7 +2,7 @@
 
 -- DROP TABLE public.mechs_types;
 
-CREATE TABLE public.mechs_types
+CREATE TABLE public.mech_types
 (
     mech_id integer NOT NULL,
     type character varying COLLATE pg_catalog."default",
@@ -11,5 +11,5 @@ CREATE TABLE public.mechs_types
 
 TABLESPACE pg_default;
 
-ALTER TABLE public.mechs_types
+ALTER TABLE public.mech_types
     OWNER to postgres;

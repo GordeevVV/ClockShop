@@ -1,8 +1,7 @@
 package com.clockshop.service.repository;
 
 import com.clockshop.service.entity.Material;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MaterialJpaRepository extends CrudRepository< Material,Integer > {
-
+public interface MaterialJpaRepository extends JpaRepository< Material,Integer > {
 }

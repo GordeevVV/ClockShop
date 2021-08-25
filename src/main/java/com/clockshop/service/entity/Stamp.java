@@ -1,14 +1,16 @@
 package com.clockshop.service.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="stamp")
 public class Stamp {
     @Id
+    @Column(name = "stamp_id")
     private int stampId;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stamp")
+//    List<Product> products;
     private String stamp;
 
     public Stamp(int stampId, String stamp) {

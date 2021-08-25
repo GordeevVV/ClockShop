@@ -1,7 +1,17 @@
 package com.clockshop.service;
 
 public interface MessageTypes {
-    String HOME="HOME",SHOP="SHOP",BASKET="BASKET",
-            ORDER="ORDER",STAMP="STAMP",CORP_MATERIAL="CORP_MATERIAL",
-            TYPE_OF_MEASUREMENT="TYPE_OF_MEASUREMENT",JDBS="JDBS",DEFAULT="DEFAULT",DELETE="Delete", BUY_CONFIRMED ="BUY_CONFIRMED";
+    String HOME = "HOME";
+    String SHOP = "SHOP";
+    String BASKET = "BASKET";
+    String ORDER = "ORDER";
+    String STAMP = "STAMP";
+    String CORP_MATERIAL = "CORP_MATERIAL";
+    String TYPE_OF_MEASUREMENT = "TYPE_OF_MEASUREMENT";
+    String DEFAULT = "DEFAULT";
+    String DELETE = "Delete";
+    String BUY_CONFIRMED = "BUY_CONFIRMED";
+    String BUY_STAMP="BUY_STAMP";
+    String BUY_MATERIAL="BUY_MATERIAL";
+    String BUY_TYPE_OF_MEASUREMENT="BUY_TYPE_OF_MEASUREMENT";
 }
