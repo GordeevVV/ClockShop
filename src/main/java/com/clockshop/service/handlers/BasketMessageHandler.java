@@ -15,12 +15,9 @@ import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.request.SendPhoto;
 import org.springframework.stereotype.Component;
 
-import java.sql.Time;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Supplier;
 
 @Component(MessageTypes.BASKET)
 public class BasketMessageHandler implements TelegramCallbackQueryHandler,TelegramMessageHandler{
@@ -57,8 +54,8 @@ public class BasketMessageHandler implements TelegramCallbackQueryHandler,Telegr
             return o;
         });
         order.setCalcPrice(order.getCalcPrice() + product.getPrice());
+        order=orderJpaRepository.save(order);
         OrderProduct orderProduct = new OrderProduct(order.getOrderId(), product.getProductId());
-        orderJpaRepository.save(order);
         orderProductJpaRepository.save(orderProduct);
     }
 
@@ -69,7 +66,7 @@ public class BasketMessageHandler implements TelegramCallbackQueryHandler,Telegr
             order = orderJpaRepository.findByStatusAndCustomerId("basket", message.from().id()).get();
             List<OrderProduct> orderProducts = orderProductJpaRepository.findAllByOrderId(order.getOrderId());
             for (OrderProduct orderproduct : orderProducts) {
-                Product product = productJpaRepository.findAll().get(orderproduct.getProductId());
+                Product product = productJpaRepository.findById(orderproduct.getProductId()).get();
                 List<InlineKeyboardButton> inlineKeyboardButtons =
                         new ArrayList<>(new ArrayList<>(Arrays.asList(
                                 new InlineKeyboardButton("Исключить из заказа")

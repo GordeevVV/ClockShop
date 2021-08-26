@@ -38,23 +38,8 @@ public class JdbsHandler{
         this.mechTypeJpaRepository = mechTypeJpaRepository;
         this.productJpaRepository = productJpaRepository;
     }
-//    public JdbsHandler(TelegramBot bot) {
-//        this.bot = bot;
-//    }
 
     public void clockDeployment(CallbackQuery callbackQuery,List<Product> list, String typeOfBack) {
-//        Map<Integer, Stamp> mapStamp=new HashMap<>();
-//        Map<Integer, Material> mapMaterial=new HashMap<>();
-//        Map<Integer, MechType> mapMechType=new HashMap<>();
-//        for(Stamp stamp:stampJpaRepository.findAll()){
-//            mapStamp.put(stamp.getStampId(),stamp);
-//        }
-//        for(Material material:materialJpaRepository.findAll()){
-//            mapMaterial.put(material.getMaterialId(),material);
-//        }
-//        for(MechType mechType:mechTypeJpaRepository.findAll()){
-//            mapMechType.put(mechType.getMechId(),mechType);
-//        }
         int count=0;
         List<InlineKeyboardButton>inlineKeyboardButtons=new ArrayList<>();
         for (Product product:list) {
@@ -72,7 +57,7 @@ public class JdbsHandler{
             inlineKeyboardButtons.clear();
             count++;
         }
-      //  LOGGER.warn(callbackQuery.data());
+        LOGGER.info(callbackQuery.data());
         DeleteMessage deleteMessage=new DeleteMessage(callbackQuery.message().chat().id(),callbackQuery.message().messageId());
         bot.execute(deleteMessage);
         Keyboard replyKeyboardMarkup = new ReplyKeyboardMarkup(

@@ -14,6 +14,8 @@ import com.pengrad.telegrambot.model.request.InlineKeyboardButton;
 import com.pengrad.telegrambot.model.request.InlineKeyboardMarkup;
 import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.request.SendPhoto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -24,7 +26,7 @@ public class OrderMessageHandler implements TelegramMessageHandler,TelegramCallb
     OrderJpaRepository orderJpaRepository;
     OrderProductJpaRepository orderProductJpaRepository;
     ProductJpaRepository productJpaRepository;
-
+    static Logger LOGGER= LoggerFactory.getLogger(JdbsHandler.class);
 
     public OrderMessageHandler(TelegramBot bot, OrderJpaRepository orderJpaRepository
             , OrderProductJpaRepository orderProductJpaRepository, ProductJpaRepository productJpaRepository) {
@@ -41,6 +43,7 @@ public class OrderMessageHandler implements TelegramMessageHandler,TelegramCallb
             order.setCreatedAt(LocalDateTime.now());
             order.setStatus("order");
             orderJpaRepository.save(order);
+            LOGGER.info("Order created");
         }
     }
 
@@ -48,7 +51,7 @@ public class OrderMessageHandler implements TelegramMessageHandler,TelegramCallb
     public void onMessage(Message message) {
         for (Order order:orderJpaRepository.findAllByStatusAndCustomerId("order",message.from().id())) {
                 for (OrderProduct orderproduct:orderProductJpaRepository.findAllByOrderId(order.getOrderId())) {
-                        Product product=productJpaRepository.findAll().get(orderproduct.getProductId());
+                        Product product=productJpaRepository.findById(orderproduct.getProductId()).get();
                         SendPhoto sendPhoto = new SendPhoto(message.chat().id(), product.getImageUrl())
                                 .caption(product.getName() + "\n" + "Цена:" + product.getPrice() + " руб");
                         bot.execute(sendPhoto);

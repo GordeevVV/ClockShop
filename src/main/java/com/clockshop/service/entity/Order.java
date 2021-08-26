@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 public class Order {
     @Column(nullable = false)
     @Id
-    private int orderId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer orderId;
     private long customerId;
     private LocalDateTime createdAt;
     private float calcPrice;
@@ -32,11 +33,11 @@ public class Order {
         this.status = status;
     }
 
-    public int getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
 
