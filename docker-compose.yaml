@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:11
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgre
+      - POSTGRES_PASSWORD=postgre
+      - POSTGRES_DB=clockshop
+      - PG_DATA=/var/lib/postgresql/data
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - tenants-net
+  clockshop-service:
+    image: clockshop/clockshop:1.0
+    networks:
+      - tenants-net
+volumes:
+  postgresql:
+  postgresql_data:
+  concierge-service-resources:
+    driver: local
+
+networks:
+  tenants-net:
+    driver:
+       bridge
