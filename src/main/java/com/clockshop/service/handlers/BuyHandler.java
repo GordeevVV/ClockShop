@@ -1,6 +1,6 @@
 package com.clockshop.service.handlers;
 
-import com.clockshop.service.MessageTypes;
+import com.clockshop.service.constants.MessageTypes;
 import com.clockshop.service.entity.Order;
 import com.clockshop.service.repository.OrderJpaRepository;
 import com.pengrad.telegrambot.TelegramBot;
@@ -8,6 +8,7 @@ import com.pengrad.telegrambot.model.CallbackQuery;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component(MessageTypes.BUY_CONFIRMED)
@@ -16,7 +17,7 @@ public class BuyHandler implements TelegramCallbackQueryHandler{
     TelegramBot bot;
     OrderJpaRepository orderJpaRepository;
 
-    public BuyHandler(TelegramBot bot, OrderJpaRepository orderJpaRepository) {
+    public BuyHandler(@Qualifier("ShopBot") TelegramBot bot, OrderJpaRepository orderJpaRepository) {
         this.bot = bot;
         this.orderJpaRepository=orderJpaRepository;
     }

@@ -1,6 +1,6 @@
 package com.clockshop.service.handlers;
 
-import com.clockshop.service.MessageTypes;
+import com.clockshop.service.constants.MessageTypes;
 import com.clockshop.service.entity.MechType;
 import com.clockshop.service.repository.MechTypeJpaRepository;
 import com.pengrad.telegrambot.TelegramBot;
@@ -9,6 +9,7 @@ import com.pengrad.telegrambot.model.request.InlineKeyboardButton;
 import com.pengrad.telegrambot.model.request.InlineKeyboardMarkup;
 import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.request.EditMessageText;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class TypeOfMeasurementMessageHandler implements TelegramCallbackQueryHan
     TelegramBot bot;
     MechTypeJpaRepository mechTypeJpaRepository;
 
-    public TypeOfMeasurementMessageHandler(TelegramBot bot,MechTypeJpaRepository mechTypeJpaRepository) {
+    public TypeOfMeasurementMessageHandler(@Qualifier("ShopBot") TelegramBot bot, MechTypeJpaRepository mechTypeJpaRepository) {
         this.bot = bot;
         this.mechTypeJpaRepository=mechTypeJpaRepository;
     }

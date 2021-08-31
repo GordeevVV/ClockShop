@@ -21,7 +21,7 @@ CREATE TABLE public.discounts
         ON DELETE CASCADE
 )
 
-TABLESPACE pg_default;
+    TABLESPACE pg_default;
 
 ALTER TABLE public.discounts
     OWNER to postgres;

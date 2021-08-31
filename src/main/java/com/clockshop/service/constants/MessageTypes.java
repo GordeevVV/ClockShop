@@ -1,4 +1,4 @@
-package com.clockshop.service;
+package com.clockshop.service.constants;
 
 public interface MessageTypes {
     String HOME = "HOME";

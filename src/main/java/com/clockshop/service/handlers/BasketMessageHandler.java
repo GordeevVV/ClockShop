@@ -1,6 +1,6 @@
 package com.clockshop.service.handlers;
 
-import com.clockshop.service.MessageTypes;
+import com.clockshop.service.constants.MessageTypes;
 import com.clockshop.service.entity.Customer;
 import com.clockshop.service.entity.Order;
 import com.clockshop.service.entity.OrderProduct;
@@ -13,6 +13,7 @@ import com.pengrad.telegrambot.model.request.InlineKeyboardButton;
 import com.pengrad.telegrambot.model.request.InlineKeyboardMarkup;
 import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.request.SendPhoto;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class BasketMessageHandler implements TelegramCallbackQueryHandler,Telegr
     ProductJpaRepository productJpaRepository;
     CustomerJpaRepository customerJpaRepository;
 
-    public BasketMessageHandler(TelegramBot bot, OrderJpaRepository orderJpaRepository, OrderProductJpaRepository orderProductJpaRepository
+    public BasketMessageHandler(@Qualifier("ShopBot") TelegramBot bot, OrderJpaRepository orderJpaRepository, OrderProductJpaRepository orderProductJpaRepository
             , ProductJpaRepository productJpaRepository, CustomerJpaRepository customerJpaRepository) {
         this.bot = bot;
         this.orderJpaRepository = orderJpaRepository;

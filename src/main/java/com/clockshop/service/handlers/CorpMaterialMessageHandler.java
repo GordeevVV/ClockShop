@@ -1,6 +1,6 @@
 package com.clockshop.service.handlers;
 
-import com.clockshop.service.MessageTypes;
+import com.clockshop.service.constants.MessageTypes;
 import com.clockshop.service.entity.Material;
 import com.clockshop.service.repository.MaterialJpaRepository;
 import com.pengrad.telegrambot.TelegramBot;
@@ -9,6 +9,7 @@ import com.pengrad.telegrambot.model.request.InlineKeyboardButton;
 import com.pengrad.telegrambot.model.request.InlineKeyboardMarkup;
 import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.request.EditMessageText;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.List;
 public class CorpMaterialMessageHandler implements TelegramCallbackQueryHandler{
     TelegramBot bot;
     MaterialJpaRepository materialJpaRepository;
-    public CorpMaterialMessageHandler(TelegramBot bot,MaterialJpaRepository materialJpaRepository) {
+    public CorpMaterialMessageHandler(@Qualifier("ShopBot") TelegramBot bot, MaterialJpaRepository materialJpaRepository) {
         this.bot = bot;
         this.materialJpaRepository=materialJpaRepository;
     }

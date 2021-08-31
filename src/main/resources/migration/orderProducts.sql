@@ -6,7 +6,8 @@ CREATE TABLE public.order_products
 (
     order_id integer NOT NULL,
     product_id integer NOT NULL,
-    CONSTRAINT orderproduct_pkey PRIMARY KEY (order_id, product_id),
+    orderproduct_id integer NOT NULL DEFAULT nextval('order_products_orderproduct_id_seq'::regclass),
+    CONSTRAINT order_products_pk PRIMARY KEY (orderproduct_id),
     CONSTRAINT fk1 FOREIGN KEY (order_id)
         REFERENCES public.orders (order_id) MATCH SIMPLE
         ON UPDATE CASCADE
@@ -17,7 +18,7 @@ CREATE TABLE public.order_products
         ON DELETE NO ACTION
 )
 
-TABLESPACE pg_default;
+    TABLESPACE pg_default;
 
 ALTER TABLE public.order_products
     OWNER to postgres;

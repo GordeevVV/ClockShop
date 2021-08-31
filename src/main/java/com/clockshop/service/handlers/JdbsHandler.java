@@ -1,10 +1,6 @@
 package com.clockshop.service.handlers;
 
-import com.clockshop.service.MessageTypes;
-import com.clockshop.service.entity.Material;
-import com.clockshop.service.entity.MechType;
 import com.clockshop.service.entity.Product;
-import com.clockshop.service.entity.Stamp;
 import com.clockshop.service.repository.*;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.CallbackQuery;
@@ -14,12 +10,10 @@ import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.request.SendPhoto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class JdbsHandler{
@@ -30,7 +24,7 @@ public class JdbsHandler{
     MechTypeJpaRepository mechTypeJpaRepository;
     ProductJpaRepository productJpaRepository;
 
-    public JdbsHandler(TelegramBot bot, StampJpaRepository stampJpaRepository, MaterialJpaRepository materialJpaRepository
+    public JdbsHandler(@Qualifier("ShopBot") TelegramBot bot, StampJpaRepository stampJpaRepository, MaterialJpaRepository materialJpaRepository
             , MechTypeJpaRepository mechTypeJpaRepository, ProductJpaRepository productJpaRepository) {
         this.bot = bot;
         this.stampJpaRepository = stampJpaRepository;

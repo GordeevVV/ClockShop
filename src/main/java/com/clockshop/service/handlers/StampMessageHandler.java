@@ -1,6 +1,6 @@
 package com.clockshop.service.handlers;
 
-import com.clockshop.service.MessageTypes;
+import com.clockshop.service.constants.MessageTypes;
 import com.clockshop.service.entity.Stamp;
 import com.clockshop.service.repository.StampJpaRepository;
 import com.pengrad.telegrambot.TelegramBot;
@@ -9,6 +9,7 @@ import com.pengrad.telegrambot.model.request.InlineKeyboardButton;
 import com.pengrad.telegrambot.model.request.InlineKeyboardMarkup;
 import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.request.EditMessageText;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.List;
 public class StampMessageHandler implements TelegramCallbackQueryHandler{
     private TelegramBot bot;
     private StampJpaRepository stampJpaRepository;
-    public StampMessageHandler(TelegramBot bot,StampJpaRepository stampJpaRepository) {
+    public StampMessageHandler(@Qualifier("ShopBot") TelegramBot bot, StampJpaRepository stampJpaRepository) {
         this.stampJpaRepository=stampJpaRepository;
         this.bot = bot;
     }

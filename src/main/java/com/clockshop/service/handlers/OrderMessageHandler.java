@@ -1,6 +1,6 @@
 package com.clockshop.service.handlers;
 
-import com.clockshop.service.MessageTypes;
+import com.clockshop.service.constants.MessageTypes;
 import com.clockshop.service.entity.Order;
 import com.clockshop.service.entity.OrderProduct;
 import com.clockshop.service.entity.Product;
@@ -16,6 +16,7 @@ import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.request.SendPhoto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -28,7 +29,7 @@ public class OrderMessageHandler implements TelegramMessageHandler,TelegramCallb
     ProductJpaRepository productJpaRepository;
     static Logger LOGGER= LoggerFactory.getLogger(JdbsHandler.class);
 
-    public OrderMessageHandler(TelegramBot bot, OrderJpaRepository orderJpaRepository
+    public OrderMessageHandler(@Qualifier("ShopBot") TelegramBot bot, OrderJpaRepository orderJpaRepository
             , OrderProductJpaRepository orderProductJpaRepository, ProductJpaRepository productJpaRepository) {
         this.bot = bot;
         this.orderJpaRepository = orderJpaRepository;
@@ -38,13 +39,12 @@ public class OrderMessageHandler implements TelegramMessageHandler,TelegramCallb
 
     @Override
     public void onCallBackQuery(CallbackQuery callbackQuery) {
-        if(orderJpaRepository.findByStatusAndCustomerId("basket",callbackQuery.from().id()).isPresent()) {
-            Order order = orderJpaRepository.findByStatusAndCustomerId("basket", callbackQuery.from().id()).get();
-            order.setCreatedAt(LocalDateTime.now());
-            order.setStatus("order");
-            orderJpaRepository.save(order);
-            LOGGER.info("Order created");
-        }
+       orderJpaRepository.findByStatusAndCustomerId("basket", callbackQuery.from().id()).ifPresent(order -> {
+           order.setCreatedAt(LocalDateTime.now());
+           order.setStatus("order");
+           orderJpaRepository.save(order);
+           LOGGER.info("Order created");
+       });
     }
 
     @Override

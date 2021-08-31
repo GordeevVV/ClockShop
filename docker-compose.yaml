@@ -15,18 +15,23 @@ services:
       - postgresql_data:/var/lib/postgresql/data
     restart: always
     networks:
-      - tenants-net
+      - clockshop-net
   clockshop-service:
     image: clockshop/clockshop:1.0
+    environment:
+      - BOT_TOKEN=1983895587:AAFRWEbV_HWhMRozu52TH94G5lyYSyQcitY
+      - POSTGRES_PATH=jdbc:postgresql://db:5432/clockshop
+      - POSTGRES_PASSWORD=postgre
+      - POSTGRES_USERNAME=postgre
+
     networks:
-      - tenants-net
+      - clockshop-net
 volumes:
   postgresql:
   postgresql_data:
-  concierge-service-resources:
     driver: local
 
 networks:
-  tenants-net:
+  clockshop-net:
     driver:
        bridge

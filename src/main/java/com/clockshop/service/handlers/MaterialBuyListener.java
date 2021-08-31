@@ -1,6 +1,6 @@
 package com.clockshop.service.handlers;
 
-import com.clockshop.service.MessageTypes;
+import com.clockshop.service.constants.MessageTypes;
 import com.clockshop.service.entity.Product;
 import com.clockshop.service.repository.MaterialJpaRepository;
 import com.clockshop.service.repository.MechTypeJpaRepository;
@@ -8,9 +8,9 @@ import com.clockshop.service.repository.ProductJpaRepository;
 import com.clockshop.service.repository.StampJpaRepository;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.CallbackQuery;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component(MessageTypes.BUY_MATERIAL)
@@ -19,7 +19,7 @@ public class MaterialBuyListener extends JdbsHandler implements TelegramCallback
     ProductJpaRepository productJpaRepository;
     MaterialJpaRepository materialJpaRepository;
 
-    public MaterialBuyListener(TelegramBot bot, StampJpaRepository stampJpaRepository, MaterialJpaRepository materialJpaRepository
+    public MaterialBuyListener(@Qualifier("ShopBot") TelegramBot bot, StampJpaRepository stampJpaRepository, MaterialJpaRepository materialJpaRepository
             , MechTypeJpaRepository mechTypeJpaRepository, ProductJpaRepository productJpaRepository) {
         super(bot, stampJpaRepository, materialJpaRepository, mechTypeJpaRepository, productJpaRepository);
         this.bot = bot;
