@@ -1,9 +1,9 @@
 shopbot:
   name: ClockShop
-  token: ${BOT_TOKEN:1983895587:AAFRWEbV_HWhMRozu52TH94G5lyYSyQcitY}
+  token: ${CLOCK_BOT_TOKEN:1983895587:AAFRWEbV_HWhMRozu52TH94G5lyYSyQcitY}
 managerbot:
   name: ManagerControl
-  token: 1843717109:AAG0s9aPTqgf9qbFjuz6NxzGTL2bnoPcHnk
+  token: ${MANAGER_BOT_TOKEN:1843717109:AAG0s9aPTqgf9qbFjuz6NxzGTL2bnoPcHnk}
 spring:
   datasource:
     url: ${POSTGRES_PATH:jdbc:postgresql://localhost:5432/clockshop}

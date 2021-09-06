@@ -43,23 +43,19 @@ public class OrderNotifier {
 
     @Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
-        for (Manager manager : managerJpaRepository.findAll()) {
-            if(manager.getChatId()!=null) {
+        String str="";
+        for (Manager manager : managerJpaRepository.findAllByChatIdNotNull()) {
                 for (Order order : orderJpaRepository.findAllByStatusAndCustomerId("bought", manager.getChatId())) {
                     for (OrderProduct orderproduct : orderProductJpaRepository.findAllByOrderId(order.getOrderId())) {
                         Product product = productJpaRepository.findById(orderproduct.getProductId()).get();
-                        SendMessage sendMessage1 = new SendMessage(manager.getChatId()
-                                ,product.getName() + "\n" + "Цена:" + product.getPrice() + " руб");
-                        bot.execute(sendMessage1);
+                        str+=product.getName() + "\n" + "Цена:" + product.getPrice() + " руб"+"\n";
                     }
-                    SendMessage sendMessage = new SendMessage(manager.getChatId(), "Заказ #" + order.getOrderId() + "\n"
+                    SendMessage sendMessage = new SendMessage(manager.getChatId(),str+ "Заказ #" + order.getOrderId() + "\n"
                             + "Дата: " + order.getCreatedAt() + "\n" + "Стоимость заказа: " + order.getCalcPrice());
                     bot.execute(sendMessage);
-                    Order order1 = order;
-                    order1.setStatus("finished");
-                    orderJpaRepository.save(order1);
+                    order.setStatus("finished");
+                    orderJpaRepository.save(order);
                 }
-            }
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.clockshop.service.listeners;
 
-import com.clockshop.service.constants.MessageTypes;
+
 import com.clockshop.service.entity.Manager;
 import com.clockshop.service.repository.ManagerJpaRepository;
 import com.pengrad.telegrambot.TelegramBot;
@@ -10,12 +10,9 @@ import com.pengrad.telegrambot.request.SendMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class ManagerUpdateListener implements UpdatesListener{
@@ -34,22 +31,23 @@ public class ManagerUpdateListener implements UpdatesListener{
 
     @Override
     public int process(List<Update> list) {
+        String text;
         for (Update update:list) {
-            String prefix= "/start ";
-             String token=update.message().text()
-                    .substring(update.message().text().indexOf(prefix)+prefix.length());
-            logger.info(update.message().text());
-            //message().text="/start {TOKEN}"
-            Manager manager=managerJpaRepository.findByToken(token);
-            if(manager!=null){
-                manager.setChatId(update.message().chat().id());
-                managerJpaRepository.save(manager);
-                SendMessage sendMessage=new SendMessage(update.message().chat().id()
-                        ,"Congratulations you are successfully authorized");
-                bot.execute(sendMessage);
-            }else{
-                SendMessage sendMessage=new SendMessage(update.message().chat().id()
-                        ,"No such manager in our company");
+            if(update.message()!=null) {
+                String prefix = "/start ";
+                String token = update.message().text()
+                        .substring(update.message().text().indexOf(prefix) + prefix.length());
+                logger.info(update.message().text());
+                Manager manager = managerJpaRepository.findByToken(token);
+                if (manager != null) {
+                    manager.setChatId(update.message().chat().id());
+                    managerJpaRepository.save(manager);
+                    text="Congratulations you are successfully authorized";
+                } else {
+                   text="No such manager in our company";
+                }
+                SendMessage sendMessage = new SendMessage(update.message().chat().id()
+                        , text);
                 bot.execute(sendMessage);
             }
         }

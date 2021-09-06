@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component(MessageTypes.DEFAULT)
-public class DefaultHendler implements TelegramMessageHandler, TelegramCallbackQueryHandler{
+public class DefaultHandler implements TelegramMessageHandler, TelegramCallbackQueryHandler{
     static Logger LOGGER= LoggerFactory.getLogger(JdbsHandler.class);
     TelegramBot bot;
 
-    public DefaultHendler(@Qualifier("ShopBot") TelegramBot bot) {
+    public DefaultHandler(@Qualifier("ShopBot") TelegramBot bot) {
         this.bot = bot;
     }
 

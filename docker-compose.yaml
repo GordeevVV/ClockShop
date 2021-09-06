@@ -17,9 +17,10 @@ services:
     networks:
       - clockshop-net
   clockshop-service:
-    image: clockshop/clockshop:1.0
+    image: plinfy/clockshop:1.0
     environment:
-      - BOT_TOKEN=1983895587:AAFRWEbV_HWhMRozu52TH94G5lyYSyQcitY
+      - MANAGER_BOT_TOKEN=1843717109:AAG0s9aPTqgf9qbFjuz6NxzGTL2bnoPcHnk
+      - CLOCK_BOT_TOKEN=1983895587:AAFRWEbV_HWhMRozu52TH94G5lyYSyQcitY
       - POSTGRES_PATH=jdbc:postgresql://db:5432/clockshop
       - POSTGRES_PASSWORD=postgre
       - POSTGRES_USERNAME=postgre

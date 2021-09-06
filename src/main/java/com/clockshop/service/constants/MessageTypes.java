@@ -14,4 +14,6 @@ public interface MessageTypes {
     String BUY_STAMP="BUY_STAMP";
     String BUY_MATERIAL="BUY_MATERIAL";
     String BUY_TYPE_OF_MEASUREMENT="BUY_TYPE_OF_MEASUREMENT";
+    String HELP = "HELP";
+    String Properties = "Properties";
 }

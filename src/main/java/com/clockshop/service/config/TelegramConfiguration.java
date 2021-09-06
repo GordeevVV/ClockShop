@@ -19,14 +19,12 @@ public class TelegramConfiguration {
     @Value("${managerbot.token}")
     private String MANAGER_BOT_TOKEN;
     @Bean("ShopBot")
-    //@Qualifier("ShopBot")
     public TelegramBot getShopTelegramBot(){
         TelegramBot bot=new TelegramBot(SHOP_BOT_TOKEN);
         LOGGER.info("Shop Bot started");
         return bot;
     }
     @Bean("ManagerBot")
-    //@Qualifier("ManagerBot")
     public TelegramBot getManagerTelegramBot(){
         TelegramBot bot=new TelegramBot(MANAGER_BOT_TOKEN);
         LOGGER.info("Manager Bot started");

@@ -54,6 +54,7 @@ public class BasketMessageHandler implements TelegramCallbackQueryHandler,Telegr
             o.setCustomerId(customer.getCustomerId());
             return o;
         });
+
         order.setCalcPrice(order.getCalcPrice() + product.getPrice());
         order=orderJpaRepository.save(order);
         OrderProduct orderProduct = new OrderProduct(order.getOrderId(), product.getProductId());
