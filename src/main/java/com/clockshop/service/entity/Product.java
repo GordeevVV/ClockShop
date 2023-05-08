@@ -12,15 +12,6 @@ public class Product {
     private String description;
     private LocalDateTime release_date;
     private String imageUrl;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "stamp_id",referencedColumnName = "stamp_id")
-//    private Stamp stamp_id;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "material_id")
-//    private Material material;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "mech_id")
-//    private MechType mechType;
     private int stampId;
     private int materialId;
     private int mechId;

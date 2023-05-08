@@ -9,8 +9,6 @@ public class Stamp {
     @Id
     @Column(name = "stamp_id")
     private int stampId;
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stamp")
-//    List<Product> products;
     private String stamp;
 
     public Stamp(int stampId, String stamp) {

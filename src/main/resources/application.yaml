@@ -7,6 +7,9 @@ managerbot:
 spring:
   datasource:
     url: ${POSTGRES_PATH:jdbc:postgresql://localhost:5432/clockshop}
-    password: ${POSTGRES_PASSWORD:postgre}
-    username: ${POSTGRES_USERNAME:postgre}
+    password: ${POSTGRES_PASSWORD:postgres}
+    username: ${POSTGRES_USERNAME:postgres}
     driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update

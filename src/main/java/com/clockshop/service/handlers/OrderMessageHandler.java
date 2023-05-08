@@ -23,10 +23,10 @@ import java.time.LocalDateTime;
 
 @Component(MessageTypes.ORDER)
 public class OrderMessageHandler implements TelegramMessageHandler,TelegramCallbackQueryHandler{
-    TelegramBot bot;
-    OrderJpaRepository orderJpaRepository;
-    OrderProductJpaRepository orderProductJpaRepository;
-    ProductJpaRepository productJpaRepository;
+    private TelegramBot bot;
+    private OrderJpaRepository orderJpaRepository;
+    private OrderProductJpaRepository orderProductJpaRepository;
+    private ProductJpaRepository productJpaRepository;
     static Logger LOGGER= LoggerFactory.getLogger(JdbsHandler.class);
 
     public OrderMessageHandler(@Qualifier("ShopBot") TelegramBot bot, OrderJpaRepository orderJpaRepository
