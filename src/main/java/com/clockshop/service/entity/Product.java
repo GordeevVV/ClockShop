@@ -1,6 +1,10 @@
 package com.clockshop.service.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
@@ -44,33 +48,6 @@ public class Product {
     public void setMaterialId(int materialId) {
         this.materialId = materialId;
     }
-
-
-//    public Stamp getStamp_id() {
-//        return stamp_id;
-//    }
-//
-//    public void setStamp_id(Stamp stamp) {
-//        this.stamp_id = stamp;
-//    }
-//
-//
-//    public Material getMaterial() {
-//        return material;
-//    }
-//
-//    public void setMaterial(Material material) {
-//        this.material = material;
-//    }
-//
-//
-//    public MechType getMechType() {
-//        return mechType;
-//    }
-//
-//    public void setMechType(MechType mechType) {
-//        this.mechType = mechType;
-//    }
 
     public int getProductId() {
         return productId;

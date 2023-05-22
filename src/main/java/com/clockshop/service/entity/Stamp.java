@@ -1,13 +1,13 @@
 package com.clockshop.service.entity;
 
-import javax.persistence.*;
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="stamp")
 public class Stamp {
     @Id
-    @Column(name = "stamp_id")
     private int stampId;
     private String stamp;
 

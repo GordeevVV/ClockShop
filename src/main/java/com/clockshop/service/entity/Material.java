@@ -1,8 +1,8 @@
 package com.clockshop.service.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="materials")
@@ -24,15 +24,7 @@ public class Material {
         return materialId;
     }
 
-    public void setMaterialId(int materialId) {
-        this.materialId = materialId;
-    }
-
     public String getMaterial() {
         return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
     }
 }

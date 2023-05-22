@@ -5,6 +5,12 @@ managerbot:
   name: ManagerControl
   token: ${MANAGER_BOT_TOKEN:1843717109:AAG0s9aPTqgf9qbFjuz6NxzGTL2bnoPcHnk}
 spring:
+  liquibase:
+    change-log: db/changelog/db.changelog-master.yaml
+    url: ${POSTGRES_PATH:jdbc:postgresql://localhost:5432/clockshop}
+    password: ${POSTGRES_PASSWORD:postgres}
+    user: ${POSTGRES_USERNAME:postgres}
+    driver-class-name: org.postgresql.Driver
   datasource:
     url: ${POSTGRES_PATH:jdbc:postgresql://localhost:5432/clockshop}
     password: ${POSTGRES_PASSWORD:postgres}
@@ -12,4 +18,4 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate

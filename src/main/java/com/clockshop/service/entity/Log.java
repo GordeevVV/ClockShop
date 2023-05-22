@@ -1,10 +1,10 @@
 package com.clockshop.service.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
@@ -47,46 +47,6 @@ public class Log {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getProductUrl() {
-        return productUrl;
-    }
-
-    public void setProductUrl(String productUrl) {
-        this.productUrl = productUrl;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public LocalDateTime getBuyTime() {
-        return buyTime;
-    }
-
-    public void setBuyTime(LocalDateTime buyTime) {
-        this.buyTime = buyTime;
-    }
-
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
-    }
-
-    public String getMechType() {
-        return mechType;
-    }
-
-    public void setMechType(String mechType) {
-        this.mechType = mechType;
     }
 
     public String getStamp() {
