@@ -107,7 +107,7 @@ CREATE TABLE if not exists logs
     CONSTRAINT logs_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE public.discounts
+CREATE TABLE if not exists public.discounts
 (
     discount_id integer NOT NULL,
     product_id integer,
