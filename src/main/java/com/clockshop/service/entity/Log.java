@@ -15,6 +15,8 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private Integer OrderId;
+
     private String productUrl;
 
     private String productName;
@@ -27,14 +29,17 @@ public class Log {
 
     private String stamp;
 
-    public Log(String productUrl, String productName, LocalDateTime buyTime,
-               String material, String mechType, String stamp) {
+    private Float price;
+
+    public Log(Integer orderId, String productUrl, String productName, LocalDateTime buyTime, String material, String mechType, String stamp, Float price) {
+        OrderId = orderId;
         this.productUrl = productUrl;
         this.productName = productName;
         this.buyTime = buyTime;
         this.material = material;
         this.mechType = mechType;
         this.stamp = stamp;
+        this.price = price;
     }
 
     public Log() {

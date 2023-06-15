@@ -95,18 +95,6 @@ CREATE TABLE if not exists public.order_products
         ON DELETE NO ACTION
 );
 
-CREATE TABLE if not exists logs
-(
-    id bigserial,
-    product_url  varchar,
-    product_name varchar,
-    buy_time     timestamp,
-    material     varchar,
-    mech_type    varchar,
-    stamp        varchar,
-    CONSTRAINT logs_pkey PRIMARY KEY (id)
-);
-
 CREATE TABLE if not exists public.discounts
 (
     discount_id integer NOT NULL,
@@ -126,3 +114,16 @@ CREATE TABLE if not exists public.discounts
         ON DELETE CASCADE
 );
 
+CREATE TABLE if not exists logs
+(
+    id bigserial,
+    order_id     int4,
+    product_url  varchar,
+    product_name varchar,
+    buy_time     timestamp,
+    material     varchar,
+    mech_type    varchar,
+    stamp        varchar,
+    price        float4,
+    CONSTRAINT logs_pkey PRIMARY KEY (id)
+);

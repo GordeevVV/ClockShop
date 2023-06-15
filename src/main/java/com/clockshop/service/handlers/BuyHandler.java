@@ -70,10 +70,10 @@ public class BuyHandler implements TelegramCallbackQueryHandler {
                 .stream().map(x->productJpaRepository.findById(x.getProductId()).get()).collect(Collectors.toList());
         List<Log> logList = new ArrayList<>();
         for (Product product: boughtProduct) {
-            logList.add(new Log(product.getImageUrl(), product.getName(), LocalDateTime.now(),
+            logList.add(new Log(order.getOrderId(), product.getImageUrl(), product.getName(), LocalDateTime.now(),
                     materialJpaRepository.findById(product.getMaterialId()).get().getMaterial(),
                     mechTypeJpaRepository.findById(product.getMechId()).get().getType(),
-                    stampJpaRepository.findById(product.getStampId()).get().getStamp()));
+                    stampJpaRepository.findById(product.getStampId()).get().getStamp(),product.getPrice()));
         }
         logJpaRepository.saveAll(logList);
         LOGGER.info("Buy confirmed");
