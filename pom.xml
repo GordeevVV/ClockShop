@@ -16,6 +16,9 @@
         <version>3.1.0</version>
     </parent>
 
+    <properties>
+        <snakeyaml.version>2.0</snakeyaml.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -42,7 +45,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.2.27</version>
+            <version>42.6.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.pengrad</groupId>
